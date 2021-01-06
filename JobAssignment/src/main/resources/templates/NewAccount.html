@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(0, 153, 153)">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/'}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/member'}">Member</a>
+        </li>
+                <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/account'}">Account</a>
+        </li>
+                        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/report'}">Report</a>
+        </li>
+    </div>
+  </div>
+</nav>
+
+
+
+<div align="center">
+    <h1>Create Account</h1>
+    <br />
+     <div class="col-sm-4">
+    <form action="#" th:action="@{/save}" th:object="${account}" method="post">
+ 
+       
+    
+         
+           <div alight="left">        
+            <tr>
+                 <label class="form-label" >Transaction Date</label>
+                 
+                <td>
+                 <input type="hidden" th:field="*{id}" />
+                 <input type="datetime" th:field="*{transaction_date}" class="form-control" placeholder="d/m/yy, h:mm PM" required />
+                 </td>
+            </tr>
+            </div> 
+            
+            <div alight="left">        
+            <tr>
+                 <label class="form-label" >Entry Date</label>
+                 <td> <input type="datetime" th:field="*{entry_date}" class="form-control" placeholder="d/m/yy, h:mm PM" required> </td>
+            </tr>
+            </div> 
+             <div alight="left">        
+            <tr>
+                 <label class="form-label" >Purpose</label>
+                <td><input type="text" th:field="*{purpose}" class="form-control" placeholder="Purpose" required/></td>
+            </tr>
+            </div> 
+            <div alight="left">        
+            <tr>
+                 <label class="form-label" >Comment</label>
+                <td><input type="text" th:field="*{comment}" class="form-control" placeholder="Comment" required/></td>
+            </tr>
+            </div>
+            
+                        <div alight="left">        
+            <tr>
+                 <label class="form-label" >Amount</label>
+                <td><input type="number" step="any" th:field="*{amount}" class="form-control" placeholder="Amount" required/></td>
+            </tr>
+            </div>
+                        <div alight="left">        
+            <tr>
+                 <label class="form-label" >Account Holder</label>
+                <td><input type="number" step="any" th:field="*{account_holder}" class="form-control" placeholder="Account Holder" required/></td>
+
+            </tr>
+            </div>
+            
+            
+ 
+ <br>
+            <tr>
+            <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

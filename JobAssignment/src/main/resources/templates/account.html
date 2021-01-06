@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <title>All Accounts</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+ <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(0, 153, 153)">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/'}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/member'}">Member</a>
+        </li>
+                <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/account'}">Account</a>
+        </li>
+                        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/report'}">Report</a>
+        </li>
+    </div>
+  </div>
+</nav>
+
+
+<div>
+
+ <tr>
+ <br><br>
+ <div align = "left" >   
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a  th:href="@{'/new'}" class="btn btn-sm btn-success offset-md-1"> <span style="font-size:17px">Create a New Account</span> </a> 
+   
+     </div>
+ 
+ </tr>
+ <tr>
+ <br>
+ <div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+
+  <section class="offset-md-4">
+  <form action="/accounts" class="form-inline">
+   <div class="form-group mb-2">
+   <input type="number" class="form-control" name="id" placeholder="Enter account id" required/>
+      <input type="submit" class="btn btn-primary" value="search"/>
+   
+   </div>
+  </form>
+    <form action="/maccounts" class="form-inline">
+   <div class="form-group mb-2">
+   <input type="number" class="form-control" name="id" placeholder="Enter Member id" required/>
+      <input type="submit" class="btn btn-primary" value="search"/>
+   
+   </div>
+  </form>
+                 
+     <table class="table table-striped"  Style="width:1000px">
+  <thead>
+      <tr style="background-color:rgb(153, 153, 102)">
+  
+            <th scope="col">Account ID</th>
+            <th scope="col">Transaction Date</th>
+            <th scope="col">Entry Date</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Account Holder</th>
+            <th scope="col">Operation</th>
+
+   </tr>
+  </thead>
+  <tbody>
+      <tr  th:each="account : ${listaccount}">
+ <td th:text="${account.id}">Account ID</td>
+ <td th:text="${account.transaction_date}">Transaction Date</td>
+ <td th:text="${account.entry_date}">Entry Date</td>
+ <td th:text="${account.purpose}">Purpose</td> 
+  <td th:text="${account.comment}">Comment</td>
+ <td th:text="${account.amount}">Amount</td>
+ <td th:text="${account.account_holder}">Account Holder</td>
+ 
+ <td>
+      <a th:href="@{'/edit/' + ${account.id}}" class="btn btn-sm btn-info"> Edit </a>
+      <a th:href="@{'/delete/' + ${account.id}}" class="btn btn-sm btn-danger"> Delete </a>
+ 
+ </td>     
+ </tr> 
+   
+  </tbody>
+</table>
+</section>
+     
+
+    </div>
+    </div>
+
+</body>
+</html>

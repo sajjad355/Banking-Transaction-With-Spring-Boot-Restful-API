@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <title>All Accounts</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+ <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(0, 153, 153)">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/'}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/member'}">Member</a>
+        </li>
+                <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/account'}">Account</a>
+        </li>
+                        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/report'}">Report</a>
+        </li>
+
+
+
+    </div>
+  </div>
+</nav>
+
+
+<div>
+
+ <tr>
+ <br>
+
+ 
+ </tr>
+ <tr>
+ 
+ <div class="col-sm-5" align = "center">
+                 <div class="panel-body" align = "center" >
+
+        <section class="col-md-4 offset-md-7" >
+                 
+     <table class="table table-striped"  Style="width:450px">
+  <thead>
+      <tr style="background-color:rgb(153, 153, 102)">
+  
+            <th scope="col" center>Current Balance</th>
+
+
+   </tr>
+  </thead>
+  <tbody>
+
+  <td th:text="${totalcost}">Current Balance</td>
+   
+  </tbody>
+</table>
+</section>
+     
+
+    </div>
+    </div>
+    
+        <section class="col-md-4 offset-md-3" >
+    <div class="row  header-container justify-content-center">
+    <div class="header">
+       <h2>Monthly Income</h2>
+       </div>
+       </div>
+
+    <div class="container-fluid">
+    <div class="row">
+    <section class="col">
+
+  <form action="/mreport">
+
+    
+
+  <div class="form-group">
+    <label>Start Date<span style="color:red">*</span></label>
+    <input type="date" name="sDate" class="form-control" required>
+  </div>
+
+
+  <div class="form-group">
+    <label>End Date <span style="color:red">*</span></label>
+    <input type="date" name="eDate" class="form-control"  value="" required>
+  </div>
+
+<div style="text-align:center">
+<input type="submit" class="btn btn-info" value="Enter">
+</div>
+</form>
+</div>
+</div>
+</section>
+        <section class="col-md-4 offset-md-3" >
+<div class="table-responsive-sm">
+<table class="table table-striped ">
+  <thead >
+  <div style="text-align:">
+    </div>
+<br>
+    <tr style="background-color:rgb(153, 153, 102)">
+      <th colspan="3" style="text-align:center;" >Earned In This Month</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+    
+       <td colspan="2" style="text-align:center;">
+ <td th:text="${Mtotal}">Total Income</td>
+       </td>
+  </tbody>
+</table>
+</div>
+</section>
+
+  </form>
+  <br>
+    <form action="/tsreport" class="form-inline">
+<div style="text-align:center">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" class="btn btn-info" value=" Show Total Amount by Member">
+</div>
+  </form>
+<br>
+        <section class="col-md-4 offset-md-3" >
+                 
+     <table class="table table-striped"  Style="width:480px">
+  <thead>
+      <tr style="background-color:rgb(153, 153, 102)">
+  
+            <th scope="col">Member ID</th>
+            <th scope="col">Total Amount</th>
+
+
+   </tr>
+  </thead>
+  <tbody>
+      <tr  th:each="account : ${totalbymemberid}">
+ <td th:text="${account.account_holder}">Member ID</td>
+ <td th:text="${account.amount}">Total Amount</td>
+
+      
+ </tr> 
+   
+  </tbody>
+</table>
+</section>
+</body>
+</html>

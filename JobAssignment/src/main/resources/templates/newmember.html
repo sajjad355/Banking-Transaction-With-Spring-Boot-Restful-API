@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgb(0, 153, 153)">
+  <div class="container-fluid">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/'}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
+        </li>
+        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/member'}">Member</a>
+        </li>
+                <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/account'}">Account</a>
+        </li>
+                        <li class="nav-item">
+          <a  style="color:white"class="nav-link active" aria-current="page" th:href="@{'/report'}">Report</a>
+        </li>
+    </div>
+  </div>
+</nav>
+
+
+
+<div align="center">
+    <h1>Member</h1>
+    <br />
+     <div class="col-sm-4">
+    <form action="#" th:action="@{/savemember}" th:object="${member}" method="post">
+ 
+       
+    
+         
+           <div alight="left">        
+            <tr>
+                 <label class="form-label" >Name</label>
+                 
+                <td>
+                 <input type="hidden" th:field="*{id}" />
+                 <input type="text" th:field="*{name}" class="form-control" placeholder="Name" required />
+                 </td>
+            </tr>
+            </div> 
+            
+            <div alight="left">        
+            <tr>
+                 <label class="form-label" >DOB</label>
+                 <td> <input type="datetime" th:field="*{dob}" class="form-control" placeholder="d/m/yy, h:mm PM" required> </td>
+            </tr>
+            </div> 
+             <div alight="left">        
+            <tr>
+                 <label class="form-label" >SEX</label>
+                <td><input type="text" th:field="*{sex}" class="form-control" placeholder="SEX" required/></td>
+            </tr>
+            </div> 
+            <div alight="left">        
+            <tr>
+                 <label class="form-label" >Email</label>
+                <td><input type="text" th:field="*{email}" class="form-control" placeholder="Email" required/></td>
+            </tr>
+            </div>
+            
+                        <div alight="left">        
+            <tr>
+                 <label class="form-label" >Mobile Number</label>
+                <td><input type="text" step="any" th:field="*{mobile_number}" class="form-control" placeholder="Mobile Number" required/></td>
+            </tr>
+            </div>
+                        <div alight="left">        
+            <tr>
+                 <label class="form-label" >Address</label>
+                <td><input type="text"  th:field="*{address}" class="form-control" placeholder="Address"  /></td>
+            </tr>
+            </div>
+                                 <div alight="left">        
+            <tr>
+                 <label class="form-label" >Active</label>
+                <td><input type="number"  th:field="*{active}" class="form-control" placeholder="Active"  /></td>
+            </tr>
+            </div>
+            
+            
+ 
+ <br>
+            <tr>
+            <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
